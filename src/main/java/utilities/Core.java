@@ -5,6 +5,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -25,9 +26,7 @@ public class Core {
      */
     public static void waitUntilLoaded(WebElement... elements) {
         List<WebElement> listOfPageElements = new ArrayList<WebElement>();
-        for (WebElement element : elements) {
-            listOfPageElements.add(element);
-        }
+        listOfPageElements.addAll(Arrays.asList(elements));
         waitForVisibleElements(listOfPageElements, timeOut);
     }
 

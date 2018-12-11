@@ -14,7 +14,7 @@ import java.util.Date;
  */
 public class TestHooksMethods {
 
-    protected static TestDataManager testData = null;
+    private static TestDataManager testData = null;
 
     /**
      * Set up before tests

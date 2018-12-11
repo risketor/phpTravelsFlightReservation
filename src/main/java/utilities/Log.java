@@ -10,7 +10,7 @@ import org.junit.Assert;
  */
 public class Log {
 
-    final static Logger logger = Logger.getLogger(Log.class);
+    private final static Logger logger = Logger.getLogger(Log.class);
 
     public static void info(String info_message) {
         if (logger.isInfoEnabled()) {
@@ -24,11 +24,11 @@ public class Log {
         }
     }
 
-    public static void warn(String info_message) {
+    private static void warn(String info_message) {
         logger.warn(info_message);
     }
 
-    public static void error(String info_message) {
+    private static void error(String info_message) {
         logger.error(info_message);
     }
 

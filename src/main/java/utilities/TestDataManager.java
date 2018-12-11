@@ -18,11 +18,6 @@ public class TestDataManager {
     private static final String CSV_SPLIT_BY = ",";
 
     /**
-     * Location and name of the Test Data file
-     */
-    private String mTestDataLocation;
-
-    /**
      * Copy in Memory of the Test Data
      */
     static List<String[]> testDrivenData;
@@ -33,7 +28,10 @@ public class TestDataManager {
      * @param strTestDataLocation location and name of the Test Data file
      */
     public TestDataManager(String strTestDataLocation) {
-        mTestDataLocation = strTestDataLocation;
+        /**
+         * Location and name of the Test Data file
+         */
+        String mTestDataLocation = strTestDataLocation;
         TestDataManager.testDrivenData = TestDataManager.loadTestDrivenData(mTestDataLocation);
     }
 
@@ -54,7 +52,12 @@ public class TestDataManager {
                 break;
             }
         }
-        return output.trim();
+        if (output != null) {
+            return output.trim();
+        }else{
+            Log.exception("Output null");
+        }
+        return null;
     }
 
     /**
@@ -64,14 +67,13 @@ public class TestDataManager {
      * @param strTestDataLocation location and name of the Test Data file
      * @return a List<String[]> containing all the Test Data lines
      */
-    static List<String[]> loadTestDrivenData(String strTestDataLocation) {
-        String csvFile = strTestDataLocation;
+    private static List<String[]> loadTestDrivenData(String strTestDataLocation) {
         BufferedReader br = null;
         String line = "";
         List<String[]> list = new ArrayList<String[]>();
 
         try {
-            br = new BufferedReader(new FileReader(csvFile));
+            br = new BufferedReader(new FileReader(strTestDataLocation));
             while ((line = br.readLine()) != null) {
                 if (line.trim().length() > 0) {
                     String[] data = line.split(CSV_SPLIT_BY);

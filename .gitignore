@@ -1,6 +1,4 @@
-*.dumpstream
-.idea/workspace.xml
 logs/
 target/
+idea/
 
-.idea/workspace.xml

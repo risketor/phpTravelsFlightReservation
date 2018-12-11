@@ -20,22 +20,24 @@ public class ReserveFlightTest {
 
     private WebDriver driver = BrowserDriver.getDriver();
 
+    // Local variable with test data for the test session
     private int flightLowestPrice =0;
 
-    @BeforeMethod
-    public void setup() {
-        TestHooksMethods.setUp();
-    }
 
+    // The test hooks (beforeMethod and afterMethod) have been extracted to a different method so they can be reused.
+    @BeforeMethod
+    public void setup() { TestHooksMethods.setUp(); }
 
     @AfterMethod
-    public void tearDown(ITestResult result) {
-        TestHooksMethods.tearDown(result,getClass().getName());
-    }
+    public void tearDown(ITestResult result) { TestHooksMethods.tearDown(result,getClass().getName()); }
 
+    /**
+     * Test covering the reservation process of a flight.
+     * from searching the flight, selecting the cheapest flight displayed, entering the user data and confirming the reservation.
+     */
     @Test
     public void test_flight_Test() {
-        Log.info("Starting test: " + getClass().getName());
+        Log.info("STARTING TEST: " + getClass().getName());
 
         // Initiate Page Factory objects
         HomePage homePage = PageFactory.initElements(driver, HomePage.class);
@@ -165,10 +167,7 @@ public class ReserveFlightTest {
         int lowestPriceAmount = list.get(0);
         int lowestPricePosition = 0;
         int i = 0;
-        for (int s : list) {
-            int amount = s;
-
-
+        for (int amount : list) {
             if (amount < lowestPriceAmount) {
                 lowestPriceAmount = amount;
                 lowestPricePosition = i;
