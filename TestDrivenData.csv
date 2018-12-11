@@ -1,0 +1,22 @@
+/********** Test Environment CONFIG **********
+Test_URL,http://phptravels.net/,
+
+/********** Runner Config **********/
+TimeOut_In_Seconds,10,
+
+
+/********** Test Data **********/
+// FLIGHT
+Flight_From_City,East London Arpt,
+//Flight_From_City,Cadiz Arpt,
+
+Flight_To_City,Barcelona Arpt,
+Flight_Date,2019-01-16,
+
+// USER
+User_First_Name,Bender,
+User_Last_Name,The Test Automator,
+User_Email,Bender_the_automator@gmail.com,
+User_Mobile,+441234567890
+User_Address,15 Camden Rd Camden Town London NW1 9LQ
+User_Country,United Kingdom,

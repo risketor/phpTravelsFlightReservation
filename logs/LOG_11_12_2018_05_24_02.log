@@ -1,0 +1,10 @@
+[INFO ] 2018-12-11 17:24:02,889 Starting test: ReserveFlightTest
+[INFO ] 2018-12-11 17:24:17,484 Lowest flight Lowest Price found is: 118$ in position: 15
+[INFO ] 2018-12-11 17:24:26,279 Asserting details in Invoice Page:
+[INFO ] 2018-12-11 17:24:26,342 Assertion OK - 'bender the test automator' vs 'bender the test automator'
+[INFO ] 2018-12-11 17:24:26,403 Assertion OK - '15 camden rd camden town london nw1 9lq' vs '15 camden rd camden town london nw1 9lq'
+[INFO ] 2018-12-11 17:24:26,465 Assertion OK - '+441234567890' vs '+441234567890'
+[INFO ] 2018-12-11 17:24:26,527 Assertion OK - 'east london arpt' vs 'east london arpt'
+[INFO ] 2018-12-11 17:24:26,586 Assertion OK - 'barcelona arpt' vs 'barcelona arpt'
+[INFO ] 2018-12-11 17:24:27,963 Assertion OK - 'Reservation completed: 'RESERVED'
+[INFO ] 2018-12-11 17:24:27,969 TEST PASSED: ReserveFlightTest
