@@ -51,6 +51,21 @@ public class Log {
     }
 
     /**
+     * Warning condition, send message to logs as a warning
+     * For cases that we want to validate information
+     * @param s
+     * @param equals
+     */
+    public static void validateTrue(String s, boolean equals) {
+        if(!equals){
+            Log.warn("Validation Failed - " + s);
+            Assert.fail(s);
+        }else{
+            Log.info("Validation OK - " + s);
+        }
+    }
+
+    /**
      * Through exception with message
      * @param message
      */

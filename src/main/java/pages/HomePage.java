@@ -30,6 +30,10 @@ public class HomePage {
 
 
     public void waitToLoad(){
+
+        Core.waitUntilLoaded(flightToTextField);
+
+
         Core.waitUntilLoaded(flightsMenuButton);
     }
 

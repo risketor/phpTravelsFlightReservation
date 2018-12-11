@@ -20,6 +20,8 @@ public class ReserveFlightTest {
 
     private WebDriver driver = BrowserDriver.getDriver();
 
+    private int flightLowestPrice =0;
+
     @BeforeMethod
     public void setup() {
         TestHooksMethods.setUp();
@@ -56,10 +58,16 @@ public class ReserveFlightTest {
         // HOME PAGE - Open the Test URL from the Test Data file and wait for Home Page to load
         BrowserDriver.loadPage(url);
         homePage.waitToLoad();
+        Log.info("Home Page loaded.");
 
         // Selecting Flights menu
         homePage.clickOnFlightsMenuButton();
         homePage.waitForFlightMenu();
+        Log.info("Flight Menu displayed in Home Page.");
+        Log.info("Searching for flight:" );
+        Log.info(" From: '" + fromCity + "'");
+        Log.info(" To: '" + toCity + "'");
+        Log.info(" Date: '" + date + "'");
 
         // From field
         homePage.clickOnFlightFromField();
@@ -83,14 +91,25 @@ public class ReserveFlightTest {
 
         // FLIGHTS RESULTS - click on the lowest price booking
         flightsResultsPage.waitForSearchResultsToLoad();
+        Log.info("Search Results Page loaded.");
+
         // Finding lowest price position, from a list with all the prices, to click on Book Now for that position
         List<Integer> listPrices = flightsResultsPage.getPrices();
         int lowestPricePosition = findLowestPrice(listPrices);
         flightsResultsPage.clickOnBookNowButton(lowestPricePosition);
-
+        Log.info("Clicking on the lowest price of all the bookings: " + flightLowestPrice + "$ in position " + lowestPricePosition);
 
         // BOOKING PAGE - enter details and click on confirm button
         bookingPage.waitToLoad();
+        Log.info("Booking Page loaded.");
+        Log.info("Entering details in the form:");
+        Log.info(" Name: '" + name + "'");
+        Log.info(" Last Name: '" + lastName + "'");
+        Log.info(" Email: '" + email + "'");
+        Log.info(" Confirmation Email: '" + email + "'");
+        Log.info(" Mobile: '" + mobile + "'");
+        Log.info(" Address: '" + address + "'");
+        Log.info(" Country: '" + country+ "'");
 
         bookingPage.enterName(name);
         bookingPage.enterLastName(lastName);
@@ -100,27 +119,33 @@ public class ReserveFlightTest {
         bookingPage.enterAddress(address);
         bookingPage.enterCountry(country);
 
+        Log.info("Clicking on Confirm button.");
         bookingPage.clickConfirmButton();
 
 
         // INVOICE PAGE - Asserting data displayed in confirmation page with the test data
         invoicePage.waitToLoad();
+        Log.info("Invoice Page loaded.");
 
         String nameAndLastName = name + " " + lastName;
         Log.info("Asserting details in Invoice Page:");
         Log.assertTrue("'" + invoicePage.getNameAndLastName() + "' vs '" + nameAndLastName + "'", invoicePage.getNameAndLastName().equals(nameAndLastName));
         Log.assertTrue("'" + invoicePage.getAddress() + "' vs '" + address + "'", invoicePage.getAddress().equals(address));
         Log.assertTrue("'" + invoicePage.getMobile() + "' vs '" + mobile+ "'", invoicePage.getMobile().equals(mobile));
-        Log.assertTrue("'" + invoicePage.getFrom() + "' vs '" + fromCity + "'", invoicePage.getFrom().equals(fromCity));
-        Log.assertTrue("'" + invoicePage.getTo() + "' vs '" + toCity + "'", invoicePage.getTo().equals(toCity));
+
+        // For From and To just validate the values, as it is easy to enter a name and later or slightly different is displayed
+        Log.validateTrue("'" + invoicePage.getFrom() + "' vs '" + fromCity + "'", invoicePage.getFrom().equals(fromCity));
+        Log.validateTrue("'" + invoicePage.getTo() + "' vs '" + toCity + "'", invoicePage.getTo().equals(toCity));
         // Not asserting the Date, as it is displayed wrongly in booking and invoice page.
         // Log.assertTrue("Confirmation Page: '" + invoicePage.getDate() + "' VS '" + date + "'", invoicePage.getDate().equals(date));
         // Not asserting the price is the right one, it seems random in invoice page.
 
         // Clicking on Pay On Arrival button.
+        Log.info("Clicking on Pay On Arrival button.");
         invoicePage.clickOnPayOnArrivalButton();
 
         // Switch to the alert and accept it, click Yes to the confirmation for pay on arrival
+        Log.info("Clicking on Yes button in the modal displayed.");
         Alert alert = driver.switchTo().alert();
         alert.accept();
 
@@ -136,7 +161,7 @@ public class ReserveFlightTest {
      * @param list
      * @return
      */
-    private static int findLowestPrice(List<Integer> list) {
+    private int findLowestPrice(List<Integer> list) {
         int lowestPriceAmount = list.get(0);
         int lowestPricePosition = 0;
         int i = 0;
@@ -153,7 +178,7 @@ public class ReserveFlightTest {
         Log.info("Lowest flight Lowest Price found is: " + lowestPriceAmount + "$ in position: " + lowestPricePosition);
 
         // Price variable not used, as the price is not stable during the booking process in the website.
-        //flightLowestPrice = lowestPriceAmount;
+        flightLowestPrice = lowestPriceAmount;
 
         return lowestPricePosition;
     }

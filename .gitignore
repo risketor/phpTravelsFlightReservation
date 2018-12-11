@@ -1,0 +1,7 @@
+
+.idea/workspace.xml
+./logs
+./target
+*.dumpstream
+target/
+logs/
