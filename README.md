@@ -1,5 +1,5 @@
-#Php Travels Flight Reservation - Java
-Automate the reservation process of a flight using https://www.phptravels.net which is a site for practicing QA automation over travel reservations. The reservation process includes searching a flight using the search box, selecting a flight from the list and complete the reservation flow.
+## Php Travels Flight Reservation
+Java project automating the reservation process of a flight using https://www.phptravels.net which is a site for practicing QA automation over travel reservations.
 
 ## Getting Started
 1. Open a terminal window/command prompt
@@ -17,19 +17,19 @@ Run 'mvn clean test' will run the test successfully.
 ```
 mvn clean test
 ```
-There is only on test, **ReserveFlightTest** that will automate the reservation process of a flight, from searching the flight, to choosing the cheapest flight displayed, entering the user data and confirming the reservation. 
+There is only on test, **ReserveFlightTest** that will automate the reservation process of a flight, from searching the flight, selecting the cheapest flight displayed, entering the user data and confirming the reservation. 
 In the folder **./logs** there will be a log file with the date stamp for each run and also a screenshot in case the test failed. Log file will include output details from the test, steps, data used, results, assertions, fails and screenshot name in case of created.
 
 ## Test Driven Data approach
 It is easy to create a new scenario just changing data. In the file **TestDrivenData.csv** can be found:
 
-1. Environment configuration: url to the test site.
+1. Environment configuration: url to the test site, (by default https://www.phptravels.net
 2. Runner configuration: time out in seconds to wait for elements with WebDriver, by default 20 seconds.
-3. Test data - Flight: city from, city to and date. In the search for the city the test will pick up the top result of the dropdown box, therefore if the city to search has a exactly match, that will be the only result and the one to use.
+3. Test data - Flight: city from, city to and date. In the search for the city the test will pick up the top result of the dropdown box, therefore if the city to search has a exactly match, that will be the only result and the one to use, otherwise it will pick up the top result.
 4. Test data - User details: name, last name, email mobile, address and country.
 
 ### And test coding style tests
-1. WebElements are being asserted (and waited for) in each page, when landing and when interacting with them. 
+1. WebElements are being waited for and asserted in each page, when landing and interacting with them. 
 2. Test data asserted, part of the test data is asserted (as name, last name, address, etc...) in invoice page, to confirm that it is the same one used in the whole process. 
 3. Test data validated, other test data is just validated (it will not stop the test), as cities, logged as a warning, because the name could vary from the pick list to the invoice page.
 4. Other data not asserted or validated, as date or price for the ticket, as the page is not reliable for this details.
@@ -39,14 +39,14 @@ It is easy to create a new scenario just changing data. In the file **TestDriven
 * [Maven](https://maven.apache.org/) - Dependency Management 
 
 ### Code re-use
-The framework has been created to make it easier to re-use the code (hooks, drivers, logs, test data, screenshots...) and add more tests, modules, pages objects, etc...
+This project framework has been created to make it easier to re-use the existing code (test hooks, driver manage and creation, logger/logs, test data, screenshots...) and to add new tests, modules, pages objects, etc...
 
 ## Improvements
 Improvements to be done with more time:
 * Adding multiple browsers.
-* Choosing return flight.
-* Pay with credit card or other payment method.
-* Sign in as a user into php travels.
 * Having different files for test user data, environment configuration, runner, etc.
 * Create specific objects to manage the user's data or the reservation as an object with multiple fields. 
 * Improve how to manage the dropdown elements for searching the cities, so any one from the list can be picked.
+* Choosing return flight.
+* Pay with credit card or other payment method.
+* Sign in as a user into php travels.
