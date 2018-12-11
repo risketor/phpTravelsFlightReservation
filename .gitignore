@@ -1,7 +1,5 @@
-
-.idea/workspace.xml
-./logs
-./target
 *.dumpstream
-target/
-logs/
+.target/
+.logs/
+.idea/workspace.xml
+logs/FAILED_11_12_2018_06_49_29.png
