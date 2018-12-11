@@ -49,4 +49,4 @@ Improvements to be done with more time:
 * Sign in as a user into php travels.
 * Having different files for test user data, environment configuration, runner, etc.
 * Create specific objects to manage the user's data or the reservation as an object with multiple fields. 
-*
+* Improve how to manage the dropdown elements for searching the cities, so any one from the list can be picked.
