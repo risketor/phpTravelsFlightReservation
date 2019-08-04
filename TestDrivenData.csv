@@ -2,7 +2,7 @@
 Test_URL,http://phptravels.net/,
 
 /********** Runner Config **********/
-TimeOut_In_Seconds,20,
+TimeOut_In_Seconds,10,
 
 
 /********** Test Data **********/

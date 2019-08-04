@@ -40,7 +40,6 @@ public class ReserveFlightTest {
         Log.info("STARTING TEST: " + getClass().getName());
 
         // Initiate Page Factory objects
-        HomePage homePage = PageFactory.initElements(driver, HomePage.class);
         FlightsResultsPage flightsResultsPage = PageFactory.initElements(driver, FlightsResultsPage.class);
         BookingPage bookingPage = PageFactory.initElements(driver, BookingPage.class);
         InvoicePage invoicePage = PageFactory.initElements(driver, InvoicePage.class);
@@ -59,6 +58,7 @@ public class ReserveFlightTest {
 
         // HOME PAGE - Open the Test URL from the Test Data file and wait for Home Page to load
         BrowserDriver.loadPage(url);
+        HomePage homePage = new HomePage();
         homePage.waitToLoad();
         Log.info("Home Page loaded.");
 
